@@ -1,0 +1,10 @@
+{
+  "name": "react-hook-validation",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "webpack-dev-server --config ./webpack/dev.config.js",
+    "build": "webpack --config ./webpack/prod.config.js",
+    "postinstall": "npm run build"
+  },
+  "license": "MIT"
+}
