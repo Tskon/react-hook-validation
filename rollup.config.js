@@ -20,6 +20,7 @@ export default [
                 sourcemap: true,
             },
         ],
+        external: ['react', 'demo'],
         plugins: [
             resolve(),
             commonjs(),
@@ -27,7 +28,7 @@ export default [
         ],
     },
     {
-        input: 'dist/esm/lib/index.d.ts',
+        input: 'dist/esm/index.d.ts',
         output: [{ file: 'dist/index.d.ts', format: 'esm' }],
         plugins: [dts()],
     },
