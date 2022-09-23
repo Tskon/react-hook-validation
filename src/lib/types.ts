@@ -18,7 +18,7 @@ export interface FieldsConfig {
   [name: string]: (ValidationType|ValidationObjectType)[]
 }
 
-export type ValidationState<Type extends FieldsConfig> = {
+export type ValidationObjectState<Type extends FieldsConfig> = {
   [Name in keyof Type]?: {
       [Validation in ValidationType]?: boolean|null
   }

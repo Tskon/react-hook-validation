@@ -1,12 +1,16 @@
 import {useState} from 'react'
-import {FieldsConfig, ValidationFn, ValidationState} from './types'
+import {FieldsConfig, ValidationFn, ValidationObjectState} from './types'
 import * as validations from './validations'
+
+export type ValidationFieldsConfig = FieldsConfig
+export type ValidationFunction = ValidationFn
+export type ValidationState<T extends ValidationFieldsConfig> = ValidationObjectState<T>
 
 const validationFns = {
   ...validations,
-} as {[key: string]: ValidationFn}
+} as {[key: string]: ValidationFunction}
 
-export const useValidation = <Type extends FieldsConfig>(fieldsConfig: Type) => {
+export const useValidation = <Type extends ValidationFieldsConfig>(fieldsConfig: Type) => {
   const getValidationObject = (fieldsConfig: Type) => {
     const fieldNames = Object.keys(fieldsConfig) as (keyof Type)[]
 
