@@ -1,1 +1,1 @@
-import {useValidation} from '../../dist'
+import {useValidation} from "../lib";

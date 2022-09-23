@@ -10,7 +10,7 @@ const validationFns = {
   ...validations,
 } as {[key: string]: ValidationFunction}
 
-export default <Type extends ValidationFieldsConfig>(fieldsConfig: Type) => {
+export const useValidation = <Type extends ValidationFieldsConfig>(fieldsConfig: Type) => {
   const getValidationObject = (fieldsConfig: Type) => {
     const fieldNames = Object.keys(fieldsConfig) as (keyof Type)[]
 
