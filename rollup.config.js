@@ -22,7 +22,6 @@ export default [
                 sourcemap: true,
             },
         ],
-        external: ['demo'],
         plugins: [
             peerDepsExternal(),
             resolve(),
