@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+label span {
+  display: block;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid gray;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  padding: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+}
