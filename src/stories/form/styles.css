@@ -8,14 +8,27 @@
   max-width: 300px;
 }
 
+label {
+  margin-bottom: 12px;
+}
+
 label span {
   display: block;
+  color: #999;
+}
+
+label span i {
+  padding-left: 4px;
+  color: green;
+}
+
+.negative-result {
+  color: darkred;
 }
 
 .input {
   width: 100%;
   padding: 8px;
-  margin-bottom: 12px;
   border-radius: 6px;
   border: 1px solid gray;
 }
