@@ -14,7 +14,8 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "prod": "rm -rf ./dist && rollup -c"
+    "prod": "rm -rf ./dist && rollup -c",
+    "publish": "yarn prod && npm publish"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "22.0.2",
