@@ -1,6 +1,11 @@
 import React, {ChangeEvent, FormEvent, useCallback, useState} from 'react'
 import './styles.css'
-import {useValidation} from '../../lib'
+import {createValidation} from '../../lib'
+
+const {useValidation} = createValidation({
+  custom: (value) => value === 'custom',
+  customObj: (value, variousValue) => value === variousValue,
+})
 
 export interface FormProps {
   /**

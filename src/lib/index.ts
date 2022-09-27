@@ -1,18 +1,20 @@
 import {useState} from 'react'
-import {FieldsConfig, ValidationFn, ValidationObjectState} from './types'
+import {FieldsConfig, ValidationFn, ValidationsObject} from './types'
 import * as validations from './validations'
-
-export type ValidationFieldsConfig = FieldsConfig
 
 export type ValidationFunction = ValidationFn
 
-export type ValidationState<T extends ValidationFieldsConfig> = ValidationObjectState<T>
-
 const validationFns = {
   ...validations,
-} as {[key: string]: ValidationFunction}
+} as ValidationsObject
 
-export const useValidation = <Type extends ValidationFieldsConfig>(fieldsConfig: Type) => {
+const useInnerValidation = <Type extends FieldsConfig>(fieldsConfig: Type, validationFns: ValidationsObject) => {
+  type ValidationState = {
+    [Name in keyof Type]?: {
+      [Validation in keyof typeof validationFns]?: boolean|null
+    }
+  }
+
   const getValidationObject = (fieldsConfig: Type) => {
     const fieldNames = Object.keys(fieldsConfig) as (keyof Type)[]
 
@@ -30,7 +32,7 @@ export const useValidation = <Type extends ValidationFieldsConfig>(fieldsConfig:
     }, {})
   }
 
-  const [validationState, setValidationState] = useState<ValidationState<Type>>(getValidationObject(fieldsConfig))
+  const [validationState, setValidationState] = useState<ValidationState>(getValidationObject(fieldsConfig))
 
   return {
     validate: (name: keyof Type|string, value: string) => {
@@ -120,6 +122,21 @@ export const useValidation = <Type extends ValidationFieldsConfig>(fieldsConfig:
 
         return Object.values(validationField).every(value => value === null)
       })
+    },
+  }
+}
+
+export const createValidation = (customValidations: ValidationsObject) => {
+  const validations = {
+    ...validationFns,
+    ...customValidations,
+  }
+
+
+
+  return {
+    useValidation(fieldsConfig: FieldsConfig) {
+      return useInnerValidation(fieldsConfig, validations)
     },
   }
 }
