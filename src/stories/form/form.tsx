@@ -3,7 +3,7 @@ import './styles.css'
 import {createValidation} from '../../lib'
 
 const {useValidation} = createValidation({
-  custom: (value) => value === 'custom',
+  custom: (value: string) => value === 'custom',
   customObj: (value, variousValue) => value === variousValue,
 })
 
@@ -29,8 +29,8 @@ export const Form = (props: FormProps) => {
   const v = useValidation({
     name: [{
       type: 'minLength',
-      value: 2,
-    }],
+      value: '2',
+    }, 'custom'],
     email: ['required', 'email'],
     password: ['required', 'password'],
   })

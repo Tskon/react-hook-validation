@@ -1,12 +1,6 @@
 import {useState} from 'react'
-import {FieldsConfig, ValidationFn, ValidationsObject} from './types'
-import * as validations from './validations'
-
-export type ValidationFunction = ValidationFn
-
-const validationFns = {
-  ...validations,
-} as ValidationsObject
+import {FieldsConfig, ValidationsObject} from './types'
+import * as validationFns from './validations'
 
 const useInnerValidation = <Type extends FieldsConfig>(fieldsConfig: Type, validationFns: ValidationsObject) => {
   type ValidationState = {
@@ -126,13 +120,13 @@ const useInnerValidation = <Type extends FieldsConfig>(fieldsConfig: Type, valid
   }
 }
 
-export const createValidation = (customValidations: ValidationsObject) => {
+export const createValidation = <T extends ValidationsObject>(customValidations: T) => {
   const validations = {
     ...validationFns,
     ...customValidations,
   }
 
-  type ValidationKeys = keyof typeof validations
+  type ValidationKeys = keyof typeof validationFns | Exclude<keyof T, symbol>
 
   return {
     useValidation(fieldsConfig: FieldsConfig<ValidationKeys>) {
@@ -140,3 +134,5 @@ export const createValidation = (customValidations: ValidationsObject) => {
     },
   }
 }
+
+export {ValidationFn} from './types'
