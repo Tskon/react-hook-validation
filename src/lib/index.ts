@@ -3,7 +3,9 @@ import {FieldsConfig, ValidationFn, ValidationObjectState} from './types'
 import * as validations from './validations'
 
 export type ValidationFieldsConfig = FieldsConfig
+
 export type ValidationFunction = ValidationFn
+
 export type ValidationState<T extends ValidationFieldsConfig> = ValidationObjectState<T>
 
 const validationFns = {

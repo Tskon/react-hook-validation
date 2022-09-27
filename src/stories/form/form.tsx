@@ -1,20 +1,20 @@
-import React, {ChangeEvent, FormEvent, useCallback, useState} from 'react';
-import './styles.css';
-import {useValidation} from "../../lib";
+import React, {ChangeEvent, FormEvent, useCallback, useState} from 'react'
+import './styles.css'
+import {useValidation} from '../../lib'
 
 export interface FormProps {
   /**
    * Initial form data
    */
   initState?: {
-    name?: string,
-    email?: string,
+    name?: string
+    email?: string
     password?: string
   }
   /**
    * Submit handler
    */
-  onSubmit?: () => void;
+  onSubmit?: ()=> void
 }
 
 /**
@@ -24,10 +24,10 @@ export const Form = (props: FormProps) => {
   const v = useValidation({
     name: [{
       type: 'minLength',
-      value: 2
+      value: 2,
     }],
     email: ['required', 'email'],
-    password: ['required', 'password']
+    password: ['required', 'password'],
   })
 
   const [form, setForm] = useState({
@@ -36,16 +36,16 @@ export const Form = (props: FormProps) => {
     password: props.initState?.password || '',
   })
 
-  const inputHandler = useCallback((e:ChangeEvent<HTMLInputElement>) => {
+  const inputHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setForm((state) => ({
       ...state,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }))
 
     v.validate(e.target.name, e.target.value)
   }, [])
 
-  const submitHandler = useCallback((e:FormEvent) => {
+  const submitHandler = useCallback((e: FormEvent) => {
     e.preventDefault()
   }, [])
 
@@ -61,7 +61,7 @@ export const Form = (props: FormProps) => {
     {
       key: 'password',
       type: 'password',
-    }
+    },
   ]
 
   return (
@@ -74,30 +74,33 @@ export const Form = (props: FormProps) => {
           const formKey = key as keyof typeof form
 
           return (
-              <label key={key}>
-                <span>
-                  {key.toUpperCase()}
-                </span>
-                <input
-                    type={type}
-                    name={key}
-                    className="input"
-                    value={form[key as keyof typeof form]}
-                    onInput={inputHandler}
-                />
-                <span className="v-status">
-                  Is valid:
-                  <i className={!v.isValid(formKey) ? 'negative-result' : ''}>
-                    {v.isValid(formKey) ? 'true' : 'false'}
-                  </i>
-                </span>
-                <span>
-                  Is touched:
-                  <i className={v.isUntouched(formKey) ? 'negative-result' : ''}>
-                    {v.isTouched(formKey) ? 'true' : 'false'}
-                  </i>
-                </span>
-              </label>
+            <label key={key}>
+              <span>
+                {key.toUpperCase()}
+              </span>
+
+              <input
+                className="input"
+                name={key}
+                type={type}
+                value={form[key as keyof typeof form]}
+                onInput={inputHandler}
+              />
+
+              <span className="v-status">
+                Is valid:
+                <i className={!v.isValid(formKey) ? 'negative-result' : ''}>
+                  {v.isValid(formKey) ? 'true' : 'false'}
+                </i>
+              </span>
+
+              <span>
+                Is touched:
+                <i className={v.isUntouched(formKey) ? 'negative-result' : ''}>
+                  {v.isTouched(formKey) ? 'true' : 'false'}
+                </i>
+              </span>
+            </label>
           )
         })
       }
@@ -106,5 +109,5 @@ export const Form = (props: FormProps) => {
         submit
       </button>
     </form>
-  );
-};
+  )
+}

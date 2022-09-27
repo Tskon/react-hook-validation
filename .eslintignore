@@ -1,0 +1,5 @@
+/.env
+/.next/
+/.idea/
+/build/
+/node_modules/
