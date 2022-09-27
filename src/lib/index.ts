@@ -135,4 +135,6 @@ export const createValidation = <T extends ValidationsObject>(customValidations:
   }
 }
 
-export {ValidationFn} from './types'
+export type ValidationKeys = keyof typeof validationFns
+
+export {ValidationFn, FieldsConfig} from './types'
