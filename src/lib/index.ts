@@ -19,9 +19,9 @@ const useInnerValidation = <Type extends FieldsConfig>(fieldsConfig: Type, valid
     const fieldNames = Object.keys(fieldsConfig) as (keyof Type)[]
 
     return fieldNames.reduce((obj, fieldName) => {
-      const fieldState = {} as { [name: string]: boolean|null }
+      const fieldState = {} as { [name: string|number]: boolean|null }
       fieldsConfig[fieldName].forEach(validation => {
-        if (typeof validation === 'string') {
+        if (typeof validation === 'string' || typeof validation === 'number') {
           fieldState[validation] = null
         } else {
           fieldState[validation.type] = null
@@ -39,7 +39,7 @@ const useInnerValidation = <Type extends FieldsConfig>(fieldsConfig: Type, valid
       if (!fieldsConfig[name]) return
 
       const result = fieldsConfig[name].reduce((obj, validation) => {
-        if (typeof validation === 'string') {
+        if (typeof validation === 'string' || typeof validation === 'number') {
           return {...obj, [validation]: validationFns[validation](value)}
         }
 
@@ -132,10 +132,10 @@ export const createValidation = (customValidations: ValidationsObject) => {
     ...customValidations,
   }
 
-
+  type ValidationKeys = keyof typeof validations
 
   return {
-    useValidation(fieldsConfig: FieldsConfig) {
+    useValidation(fieldsConfig: FieldsConfig<ValidationKeys>) {
       return useInnerValidation(fieldsConfig, validations)
     },
   }
