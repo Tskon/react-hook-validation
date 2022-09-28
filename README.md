@@ -38,7 +38,7 @@ const MyComponent = () => {
       <input 
         value={inputValue}
         onChange={inputHandler}
-        name="name"
+        name="myInput"
       />
       
       <button disabled={!v.isValid()}>
