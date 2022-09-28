@@ -2,9 +2,7 @@
 Small. Simple. Without dependencies. Based on hooks. Typescript ready.
 
 ## Installation
-`npm install @tskon/react-hook-validation`
-
-`yarn add @tskon/react-hook-validation`
+`npm install @tskon/react-hook-validation` or `yarn add @tskon/react-hook-validation`
 
 ## Usage
 
