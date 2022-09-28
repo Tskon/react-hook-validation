@@ -48,3 +48,12 @@ const MyComponent = () => {
   )
 }
 ```
+
+## Builtin validation list
+ - required
+ - email
+ - url
+ - minLength
+ - password // check password strength
+ - phone // in universal world format
+ - telegram

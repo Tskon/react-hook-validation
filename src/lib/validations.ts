@@ -45,6 +45,8 @@ export const url = (value: string) => {
   return urlRegExp.test(value.trim())
 }
 
+// TODO delete validations below, because its for narrow usage
+
 export const name = (value: string) => {
   if (!value) return true
 
