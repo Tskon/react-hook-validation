@@ -57,3 +57,17 @@ const MyComponent = () => {
  - password // check password strength
  - phone // in universal world format
  - telegram
+
+## Validation methods
+```js
+const v = useValidation({
+  // fields config
+})
+```
+ - `v.validate(fieldName, fieldValue)` - use where you handle user input
+ - `v.reset()` - reset validation state
+ - `v.getState(fieldName?)` - returns validation state of one field or full state object.
+ - `v.isInvalid(fieldName?)` - returns Boolean state about of one field / all fields. If field untouched - it's `false`
+ - `v.isValid(fieldName?)` - returns Boolean state about of one field / all fields. If field untouched - it's `false`
+ - `v.isTouched(fieldName?)` - returns Boolean touch state about of one field / all fields.
+ - `v.isUntouched(fieldName?)` - returns Boolean touch state about of one field / all fields.
