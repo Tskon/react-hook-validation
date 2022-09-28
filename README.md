@@ -13,17 +13,17 @@ import {createValidation} from '@tskon/react-hook-validation'
 // initialise this in separate file only one for whole project.
 const {useValidation} = createValidation({
   // your own validation rules
-  myRule: (valueFromInput, optionalStaticValue) => {
-    return valueFromInput === optionalStaticValue
-  }
+  myRule1: (valueFromInput) => valueFromInput === 'John',
+  myRule2: (valueFromInput, optionalStaticValue) => valueFromInput === optionalStaticValue
 })
 
 const MyComponent = () => {
   const v = useValidation({
     myInput: [
-      'name',
+      'required',
+      'myRule1',
       { type: 'minLength', value: 2},
-      { type: 'myRule', value: 'John'},
+      { type: 'myRule2', value: 'John'},
     ]
   })
   
