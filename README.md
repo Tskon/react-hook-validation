@@ -1,5 +1,5 @@
 # Validation for React
-Small. Simple. Without dependencies. Based on hooks.
+Small. Simple. Without dependencies. Based on hooks. Typescript ready.
 
 ## Installation
 `npm install @tskon/react-hook-validation`
