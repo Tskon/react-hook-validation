@@ -1,6 +1,9 @@
 # Validation for React
 Small. Simple. Without dependencies. Based on hooks. Typescript ready.
 
+minified - `2kb`,
+gzipped - less than `1kb` - [bundlephobia](https://bundlephobia.com/package/@tskon/react-hook-validation)
+
 ## Installation
 `npm install @tskon/react-hook-validation` or `yarn add @tskon/react-hook-validation`
 
