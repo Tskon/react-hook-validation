@@ -1,10 +1,7 @@
 {
   "name": "@tskon/react-hook-validation",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@tskon"
-  },
   "description": "A simple hook-based react library for validation",
-  "version": "0.0.6",
+  "version": "0.0.1",
   "author": "Kontstantin Tsekhmeister",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -13,9 +10,22 @@
     "dist"
   ],
   "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tskon/react-hook-validation.git"
+  },
+  "keywords": [
+    "react",
+    "validation",
+    "hooks"
+  ],
+  "bugs": {
+    "url": "https://github.com/Tskon/react-hook-validation/issues"
+  },
+  "homepage": "https://github.com/Tskon/react-hook-validation#readme",
   "scripts": {
     "prod": "rm -rf ./dist && rollup -c",
-    "publ": "yarn prod && npm publish",
+    "publ": "yarn prod && npm publish --access public",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx src src",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
