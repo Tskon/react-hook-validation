@@ -50,6 +50,16 @@ const MyComponent = () => {
 ```
 
 ## Init value for validation
+
+useValidation(FieldsConfig[, InitValues])
+
+possible values for init values: undefined, null, boolean
+
+null, undefined - untouched state
+
+true - touched, valid
+
+false - touched, invalid
 ```js
 const v = useValidation(
   {
