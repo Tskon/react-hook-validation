@@ -2,7 +2,9 @@ import {useState} from 'react'
 import {FieldsConfig, ValidationsObject} from './types'
 import * as validationFns from './validations'
 
-const useInnerValidation = <Type extends FieldsConfig>(fieldsConfig: Type, validationFns: ValidationsObject) => {
+const useInnerValidation = <Type extends FieldsConfig>(fieldsConfig: Type, validationFns: ValidationsObject, initState?: {
+  [Name in keyof Type]?: boolean|null
+}) => {
   type ValidationState = {
     [Name in keyof Type]?: {
       [Validation in keyof typeof validationFns]?: boolean|null
@@ -16,9 +18,13 @@ const useInnerValidation = <Type extends FieldsConfig>(fieldsConfig: Type, valid
       const fieldState = {} as { [name: string|number]: boolean|null }
       fieldsConfig[fieldName].forEach(validation => {
         if (typeof validation === 'string' || typeof validation === 'number') {
-          fieldState[validation] = null
+          fieldState[validation] = (initState && typeof initState[fieldName] === 'boolean')
+            ? initState[fieldName] as boolean
+            : null
         } else {
-          fieldState[validation.type] = null
+          fieldState[validation.type] = (initState && typeof initState[fieldName] === 'boolean')
+            ? initState[fieldName] as boolean
+            : null
         }
       })
 
@@ -129,8 +135,8 @@ export const createValidation = <T extends ValidationsObject>(customValidations:
   type ValidationKeys = keyof typeof validationFns | Exclude<keyof T, symbol>
 
   return {
-    useValidation(fieldsConfig: FieldsConfig<ValidationKeys>) {
-      return useInnerValidation(fieldsConfig, validations)
+    useValidation(fieldsConfig: FieldsConfig<ValidationKeys>, initState?: Record<string, boolean|null>) {
+      return useInnerValidation(fieldsConfig, validations, initState)
     },
   }
 }

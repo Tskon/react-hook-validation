@@ -7,7 +7,12 @@ export default {
   component: Form,
 } as ComponentMeta<typeof Form>
 
-const Template: ComponentStory<typeof Form> = (args) => <Form {...args} />
+const Template: ComponentStory<typeof Form> = () => <Form />
+const TemplateWithValidationState: ComponentStory<typeof Form> = () => <Form initValidation={{password: true, name: false, email: null}} />
 
 export const EmptyForm = Template.bind({})
-EmptyForm.args = {}
+
+export const EmptyFormWithValidationState = TemplateWithValidationState.bind({})
+
+
+

@@ -16,6 +16,11 @@ export interface FormProps {
     email?: string
     password?: string
   }
+
+  /**
+   * Initial validation data
+   */
+  initValidation?: Record<'name'|'email'|'password', boolean|null>
   /**
    * Submit handler
    */
@@ -32,8 +37,8 @@ export const Form = (props: FormProps) => {
       value: '2',
     }, 'custom'],
     email: ['required', 'email'],
-    password: ['required', 'password'],
-  })
+    password: ['password'],
+  }, props.initValidation)
 
   const [form, setForm] = useState({
     name: props.initState?.name || '',
