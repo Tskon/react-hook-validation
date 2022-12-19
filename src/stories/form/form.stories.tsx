@@ -13,6 +13,3 @@ const TemplateWithValidationState: ComponentStory<typeof Form> = () => <Form ini
 export const EmptyForm = Template.bind({})
 
 export const EmptyFormWithValidationState = TemplateWithValidationState.bind({})
-
-
-
