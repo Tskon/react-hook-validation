@@ -7,8 +7,7 @@ gzipped - less than `1kb` - [bundlephobia](https://bundlephobia.com/package/@tsk
 ## Installation
 `npm install @tskon/react-hook-validation` or `yarn add @tskon/react-hook-validation`
 
-## Usage
-
+## Basic Usage
 ```js
 import {createValidation} from '@tskon/react-hook-validation'
 // initialise this in separate file only one for whole project.
@@ -48,6 +47,21 @@ const MyComponent = () => {
     </form>
   )
 }
+```
+
+## Init value for validation
+```js
+const v = useValidation(
+  {
+    password: ['required', 'password'],
+    link: ['url'],
+    email: ['required', 'email']
+  },
+  {
+    password: null,
+    link: true,
+  }
+)
 ```
 
 ## Builtin validation list
