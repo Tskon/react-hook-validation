@@ -1,4 +1,4 @@
-const emailRegExp = /^[a-z0-9.-]+@[a-z]+\.[a-z]{2,3}$/
+const emailRegExp = /^[a-zA-Z0-9.-]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$/
 const passwordStrengthRegExp = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$/
 const telegramRegExp = /^@.{4,63}$/
 const urlRegExp = /^(https?:\/\/)?([(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}|\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|localhost)\b([-a-zA-Z0-9@:%_\+.~#?&\/=]*)$/
