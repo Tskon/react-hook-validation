@@ -1,7 +1,7 @@
 {
   "name": "@tskon/react-hook-validation",
   "description": "A simple hook-based react library for validation",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": "Kontstantin Tsekhmeister",
   "license": "MIT",
   "main": "dist/cjs/index.js",
